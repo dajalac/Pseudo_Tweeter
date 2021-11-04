@@ -27,7 +27,7 @@
       </div>
     </div>
     <!--tweets info container -->
-    <div class="hidden border-b border-gray-300 gap-3 mx-2 py-3 text-gray-500 text-xs  // md:flex">
+    <div class="hidden border-b border-gray-200 gap-3 mx-2 py-3 text-gray-500 text-sm  // md:flex">
       <div class="flex flex-col items-center justify-center ">
         <span>TWEETS</span>
         <span>2,409</span>
@@ -43,7 +43,7 @@
     </div>
     <!-- tweets input container -->
     <div
-      class="border border-gray-400 divider-y ml-20 -mt-4 px-2 rounded-full w-3/5
+      class="border border-gray-400  ml-20 -mt-4 px-2 rounded-full w-3/5
             // sm:ml-6 sm:mt-1 sm:w-11/12 sm:mt-3 sm:mb-3 // md:ml-2"
     >
       <input
