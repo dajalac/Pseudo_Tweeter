@@ -1,11 +1,11 @@
 <template>
-  <div class="flex flex-col w-full shadow //">
+  <div class="bg-white flex flex-col w-full py-4 rounded-lg shadow // sm:py-0">
     <!--bg imag-->
     <div class="hidden // sm:flex">
       <img
         src="https://i.pinimg.com/originals/2c/84/0e/2c840e86d494c5e809f850b00a69ad29.jpg"
         alt="cover"
-        class="h-32 w-full // "
+        class="h-32 rounded-t-lg w-full // "
       >
     </div>
     <!--user info container -->

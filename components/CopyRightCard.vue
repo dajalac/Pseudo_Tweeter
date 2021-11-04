@@ -1,5 +1,5 @@
 <template>
-  <div class="cursor-pointer  flex flex-col text-xs shadow">
+  <div class="bg-white cursor-pointer flex flex-col gap-1 p-2 rounded-lg shadow text-xs">
     <ul class="flex gap-1">
       <li>© 2021</li>
       <li>Twitter</li>
