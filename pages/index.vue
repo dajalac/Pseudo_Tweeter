@@ -15,7 +15,7 @@
       <!--right column-->
       <div class="hidden flex-col gap-4 w-2/3 // md:flex ">
         <to-follow-container />
-        <copy-right-card />
+        <copy-right-card/>
       </div>
     </div>
   </div>
@@ -23,10 +23,11 @@
 
 <script>
 import CopyRightCard from '../components/CopyRightCard.vue'
+import ToFollowContainer from '../components/ToFollowContainer.vue'
 import TrendsCard from '../components/TrendsCard.vue'
 import UserCard from '../components/UserCard.vue'
 export default {
-  components: { UserCard, TrendsCard, CopyRightCard }
+  components: { UserCard, TrendsCard, CopyRightCard, ToFollowContainer }
   // flex flex-col justify-center items-center gap-2 mt-16 sm:mx-14 md:mx-28 md:flex-row
 }
 </script>

@@ -10,15 +10,15 @@
         <!-- menu options-->
         <ul class="hidden md:flex flex-row gap-6 cursor-pointer">
           <li>
-            <div class="flex flex-row justify-center items-center gap-1">
+            <NuxtLink to="/" class="flex flex-row justify-center items-center gap-1">
               <fa icon="home" />
               <span>Home</span>
-            </div>
+            </NuxtLink >
           </li>
           <li>
             <div class="flex flex-row justify-center items-center gap-1">
               <fa icon="bell" />
-              <span>notifications</span>
+              <span>Notifications</span>
             </div>
           </li>
           <li>
@@ -28,10 +28,10 @@
             </div>
           </li>
           <li>
-            <div class="flex flex-row justify-center items-center gap-1">
+            <NuxtLink to="/user" class="flex flex-row justify-center items-center gap-1">
               <fa icon="user" />
               <span>Me</span>
-            </div>
+            </NuxtLink>
           </li>
         </ul>
         <!--logo-->
