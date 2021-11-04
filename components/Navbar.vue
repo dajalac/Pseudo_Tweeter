@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col justify-center items-center mx-auto">
+  <div class="flex flex-col justify-center items-center fixed top-0 left-0 right-0 z-99 ">
     <div class="flex w-full justify-center items-center bg-gray-800 py-4 px-2">
       <nav class="fixedNavbar">
         <!--burger btn om mobile view -->
         <button class="flex md:hidden" @click="onClickBtn">
-          <fa v-if ="!showMenu" icon="bars" class="fa-lg" />
+          <fa v-if="!showMenu" icon="bars" class="fa-lg" />
           <fa v-else icon="times" class="fa-lg text-gray-400 " />
         </button>
         <!-- menu options-->
@@ -40,7 +40,7 @@
         </ul>
         <!--second menu-->
         <ul class="flex flex-row justify-center  items-center gap-4 cursor-pointer">
-          <li><Searchbar /></li>
+          <li><SearchBar /></li>
           <li class="hidden md:flex">
             <fa icon="comments" class=" fa-lg" />
           </li>
@@ -54,7 +54,7 @@
       </nav>
     </div>
     <!-- mobile menu -->
-    <div v-if="showMenu" class="flex md:hidden w-full justify-center items-left">
+    <div v-if="showMenu" class="flex md:hidden w-full justify-center items-left z-100 bg-gray-100">
       <nav class="flex flex-col  justify-left gap-4 w-full text-gray-600 px-6 pt-3">
         <ul class="flex flex-col gap-4">
           <li class="menuMobile">
@@ -121,7 +121,7 @@ export default {
 }
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scope>
 
 .fixedNavbar{
   @apply flex

@@ -42,9 +42,11 @@ export default {
     component: 'fa',
     icons: {
       solid: true,
+      regular: true,
       brands: true
     }
   },
+
   svg: {
     vueSvgLoader: {
       // vue-svg-loader options
