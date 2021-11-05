@@ -30,6 +30,7 @@
     "eslint": "^7.29.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.12.1",
+    "miragejs": "^0.1.42",
     "postcss": "^8.3.11",
     "tailwindcss": "^2.2.19"
   }

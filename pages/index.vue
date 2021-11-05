@@ -22,13 +22,18 @@
 </template>
 
 <script>
+import axios from 'axios'
 import CopyRightCard from '../components/CopyRightCard.vue'
 import ToFollowContainer from '../components/ToFollowContainer.vue'
 import TrendsCard from '../components/TrendsCard.vue'
 import UserCard from '../components/UserCard.vue'
+
 export default {
-  components: { UserCard, TrendsCard, CopyRightCard, ToFollowContainer }
-  // flex flex-col justify-center items-center gap-2 mt-16 sm:mx-14 md:mx-28 md:flex-row
+  components: { UserCard, TrendsCard, CopyRightCard, ToFollowContainer },
+  fetch () {
+    axios.get('api/test').then((response) => { console.log(response.data) })
+  }
+
 }
 </script>
 
