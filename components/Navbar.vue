@@ -58,10 +58,10 @@
       <nav class="flex flex-col  justify-left gap-4 w-full text-gray-600 px-6 pt-3">
         <ul class="flex flex-col gap-4">
           <li class="menuMobile">
-            <div>
+            <NuxtLink to="/">
               <fa icon="home" class=" fa-lg" />
               <span>Home</span>
-            </div>
+            </NuxtLink>
           </li>
           <li class="menuMobile">
             <div>
@@ -76,10 +76,10 @@
             </div>
           </li>
           <li class="menuMobile">
-            <div>
+            <NuxtLink to="/user">
               <fa icon="user" class=" fa-lg" />
               <span>Me</span>
-            </div>
+            </NuxtLink>
           </li>
           <li class="menuMobile">
             <div>

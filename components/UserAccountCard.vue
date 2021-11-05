@@ -52,18 +52,28 @@
     <div
       class="border border-gray-400 ml-2 my-3 px-2 rounded-full w-11/12
             // sm:ml-6 // md:ml-2"
+      @click="showModal = true"
     >
       <input
         type="text"
         placeholder="Compose new Tweet"
       >
+      <div>
+        <TweetInputModal v-show="showModal" @close="showModal = false" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import TweetInputModal from './TweetInputModal.vue'
 export default {
-
+  components: { TweetInputModal },
+  data () {
+    return {
+      showModal: false
+    }
+  }
 }
 </script>
 

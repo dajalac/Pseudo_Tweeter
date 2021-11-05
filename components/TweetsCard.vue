@@ -9,11 +9,11 @@
       <!--user info-->
       <div class="h-2" />
       <div class="flex gap-2 items-center justify-start">
-        <span class="text-lg font-semibold">Jean doe </span>
-        <span> @username</span>
+        <span class="text-sm font-semibold // sm:text-lg">Jean doe </span>
+        <span class=" text-xs  // sm:text-base   "> @username</span>
       </div>
       <!--tweet container-->
-      <div class="flex flex-wrap text-justify text-sm ">
+      <div class="flex flex-wrap text-justify text-sm -ml-16 mt-4 // sm:ml-0 sm:mt-0">
         Lorem ipsum dolor sit amet consectetur,
         adipisicing elit. Consectetur a labore itaque
         necessitatibus dolorem vitae accusantium. Laboriosam,
@@ -30,15 +30,16 @@
         justify-start
         pr-2 w-full
         text-gray-500 text-xs
+        -ml-16
         //
         sm:flex-row
-        sm:justify-between"
+        sm:justify-between sm:ml-0"
       >
         <div class="w-full">
           Expand
         </div>
         <div class="flex justify-start w-full // sm:justify-end">
-          <ul class="flex flex-row gap-1 items-end // md:gap-4 md:items-center ">
+          <ul class="flex flex-row gap-4 items-end // md:gap-4 md:items-center ">
             <li>
               <div class="flex flex-row gap-1 items-center  justify-center ">
                 <fa icon="reply" />
