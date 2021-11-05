@@ -7,10 +7,7 @@
       Tweets
     </div>
     <div class="flex flex-col gap-2">
-      <tweets-card />
-      <tweets-card />
-      <tweets-card />
-      <tweets-card />
+      <tweets-card v-for ="(tweet,index) in data[0]" :key="index" :tweet="tweet" />
     </div>
   </div>
 </template>
@@ -18,7 +15,15 @@
 <script>
 import TweetsCard from './TweetsCard.vue'
 export default {
-  components: { TweetsCard }
+  components: { TweetsCard },
+  data () {
+    return {
+      data: []
+    }
+  },
+  created () {
+    this.data = this.$store.getters.getTweets
+  }
 
 }
 </script>

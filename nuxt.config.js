@@ -1,4 +1,5 @@
 export default {
+  mode: 'spa', // switching to universal mode whem mirage is not needed anymore
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'App',
@@ -22,7 +23,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/miragejs'
+    '~/plugins/mirage/miragejs.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -64,7 +65,18 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: 'http://localhost:3000/',
+    proxy: true
+  },
+  proxy: {
+    'api/': {
+      target: 'http://localhost:3000',
+      pathRewrite: {
+        '^/api/': ''
+      }
+    }
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

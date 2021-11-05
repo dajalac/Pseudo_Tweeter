@@ -2,23 +2,22 @@
   <div class="flex flex-row gap-1 shadow-md w-full px-4 py-2 bg-white ">
     <!--profile image-->
     <div class="flex flex-row justify-center intems-center w-16">
-      <img src="https://cdn-icons-png.flaticon.com/512/21/21104.png" alt="" class="rounded-full h-16 w-16">
+      <img v-bind:src="tweet.profilePhoto" alt="" class="rounded-full h-16 w-16">
     </div>
     <!--Tweet area-->
     <div class="flex flex-1 flex-col gap-3 ">
       <!--user info-->
       <div class="h-2" />
       <div class="flex gap-2 items-center justify-start">
-        <span class="text-sm font-semibold // sm:text-lg">Jean doe </span>
-        <span class=" text-xs  // sm:text-base   "> @username</span>
+        <span class="text-sm font-semibold // sm:text-sm">{{tweet.name}}</span>
+        <span class=" text-xs  // sm:text-base   "> {{tweet.userName}}</span>
       </div>
       <!--tweet container-->
       <div class="flex flex-wrap text-justify text-sm -ml-16 mt-4 // sm:ml-0 sm:mt-0">
-        Lorem ipsum dolor sit amet consectetur,
-        adipisicing elit. Consectetur a labore itaque
-        necessitatibus dolorem vitae accusantium. Laboriosam,
-        necessitatibus magni voluptates dolores cupiditate ducimus
-        corrupti vitae excepturi illo voluptatibus aliquid esse?
+        {{tweet.tweet}}
+      </div>
+      <div v-if="tweet.postMedia" class="flex flex-row justify-center intems-center ">
+        <img v-bind:src="tweet.postMedia" alt=" " class="">
       </div>
       <!-- card actions -->
       <div
@@ -68,7 +67,12 @@
 
 <script>
 export default {
-
+  props: {
+    tweet: {
+      type: Object,
+      required: true
+    }
+  }
 }
 </script>
 

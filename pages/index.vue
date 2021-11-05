@@ -15,14 +15,13 @@
       <!--right column-->
       <div class="hidden flex-col gap-4 w-2/3 // md:flex ">
         <to-follow-container />
-        <copy-right-card/>
+        <copy-right-card />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
 import CopyRightCard from '../components/CopyRightCard.vue'
 import ToFollowContainer from '../components/ToFollowContainer.vue'
 import TrendsCard from '../components/TrendsCard.vue'
@@ -30,11 +29,21 @@ import UserCard from '../components/UserCard.vue'
 
 export default {
   components: { UserCard, TrendsCard, CopyRightCard, ToFollowContainer },
-  fetch () {
-    axios.get('api/test').then((response) => { console.log(response.data) })
-  }
+  data () {
+    return {
 
+    }
+  },
+  async fetch ({ store }) {
+    const promisses = []
+    promisses.push(store.dispatch('setUpTweets'))
+    promisses.push(store.dispatch('setUpSuggestions'))
+
+    const data = await Promise.all(promisses)
+    return data
+  }
 }
+
 </script>
 
 <style lang="postcss" scope>
