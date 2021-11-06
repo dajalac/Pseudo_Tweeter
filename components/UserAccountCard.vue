@@ -11,9 +11,9 @@
     <!--user info container -->
     <div class="flex flex-row ml-4">
       <!--profile imag-->
-      <div>
+      <div class="flex flex-row justify-center intems-center" >
         <img
-          src="https://www.bnl.gov/today/body_pics/2017/06/stephanhruszkewycz-hr.jpg"
+          v-bind:src=" user.profile "
           alt="Joe doe"
           class="rounded-full h-32 w-32 -mt-10"
         >
@@ -21,9 +21,9 @@
       <!--user name-->
       <div class="flex flex-col ml-4 text-left">
         <h3 class="font-semibold text-xl">
-          Joe doe
+          {{user.name}}
         </h3>
-        <span class="text-sm"> @useraccount</span>
+        <span class="text-sm"> {{user.userName}}</span>
       </div>
     </div>
     <!--tweets info container -->
@@ -59,7 +59,7 @@
         placeholder="Compose new Tweet"
       >
       <div>
-        <TweetInputModal v-show="showModal" @close="showModal = false" />
+        <TweetInputModal v-show="showModal" :user="user" @close="showModal = false" />
       </div>
     </div>
   </div>
@@ -71,8 +71,12 @@ export default {
   components: { TweetInputModal },
   data () {
     return {
-      showModal: false
+      showModal: false,
+      user: null
     }
+  },
+  created () {
+    this.user = this.$store.getters.getUser
   }
 }
 </script>

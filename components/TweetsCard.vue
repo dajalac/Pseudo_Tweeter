@@ -52,8 +52,13 @@
               </div>
             </li>
             <li>
-              <div class="flex flex-row gap-1 items-center  justify-center">
+              <div @click ="likePost" class="flex flex-row gap-1 items-center  justify-center">
+                <div v-if="like" >
+                  <fa :icon="['fas', 'star']" class="text-yellow-300" />
+                </div>
+                <div v-else >
                 <fa :icon="['far', 'star']" />
+              </div>
                 <span>Favorite</span>
               </div>
             </li>
@@ -71,6 +76,18 @@ export default {
     tweet: {
       type: Object,
       required: true
+    }
+  },
+
+  data () {
+    return {
+      like: false
+    }
+  },
+  methods: {
+    likePost () {
+      this.like = !this.like
+      console.log('like')
     }
   }
 }

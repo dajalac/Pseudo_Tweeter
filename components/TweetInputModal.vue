@@ -10,6 +10,7 @@
         <img src="~assets/Twitter-ar21.svg">
       </div>
       <textarea
+        v-model="userInput"
         class="border resize-none h-1/2 w-11/12"
         type="text"
         placeholder="What is in your mind?"
@@ -21,7 +22,10 @@
         >
           Cancel
         </button>
-        <button class="border w-20 bg-blue-700 rounded-full text-gray-300">
+        <button
+          class="border w-20 bg-blue-700 rounded-full text-gray-300"
+          @click="postTweet"
+        >
           Post
         </button>
       </div>
@@ -30,10 +34,39 @@
 </template>
 
 <script>
+// import axios from 'axios'
 export default {
+  props: {
+    user: {
+      type: Object,
+      required: true
+    }
+  },
+
+  data () {
+    return {
+      userInput: ''
+    }
+  },
   methods: {
+    postTweet () {
+      const post = {
+        name: this.$props.user.name,
+        userName: this.$props.user.userName,
+        profilePhoto: this.$props.user.profile,
+        tweet: this.userInput,
+        postMedia: null
+      }
+      const data = this.$props.user
+      data.tweet = this.userInput
+      this.$store.dispatch('postTweet', { payload: post })
+      this.$store.dispatch('setupUserTweets')
+      this.$store.dispatch('setUpTweets')
+      this.$emit('close')
+    }
 
   }
+
 }
 </script>
 

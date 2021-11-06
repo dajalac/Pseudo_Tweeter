@@ -20,7 +20,6 @@ export default {
   },
   created () {
     this.data = this.$store.getters.getFollwers
-    console.log('dataaa', this.data[0])
   }
 
 }
