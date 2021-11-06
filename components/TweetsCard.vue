@@ -81,13 +81,20 @@ export default {
 
   data () {
     return {
-      like: false
+      like: this.$props.tweet.liked
     }
   },
+  like () {
+    return this.$props.tweet.liked
+  },
+
   methods: {
     likePost () {
       this.like = !this.like
-      console.log('like')
+      this.$store.dispatch('newFavorite', { id: this.$props.tweet.id })
+      this.$store.dispatch('setupUserTweets')
+      this.$store.dispatch('setUpTweets')
+      this.$store.dispatch('setupFavorites')
     }
   }
 }

@@ -11,9 +11,9 @@
     <!--user info container -->
     <div class="flex flex-row ml-4">
       <!--profile imag-->
-      <div class="flex flex-row justify-center intems-center" >
+      <div class="flex flex-row justify-center intems-center">
         <img
-          v-bind:src=" user.profile "
+          :src=" user.profile "
           alt="Joe doe"
           class="rounded-full h-32 w-32 -mt-10"
         >
@@ -21,16 +21,16 @@
       <!--user name-->
       <div class="flex flex-col ml-4 text-left">
         <h3 class="font-semibold text-xl">
-          {{user.name}}
+          {{ user.name }}
         </h3>
-        <span class="text-sm"> {{user.userName}}</span>
+        <span class="text-sm"> {{ user.userName }}</span>
       </div>
     </div>
     <!--tweets info container -->
     <div class="border-b border-gray-200 flex gap-3 justify-center mx-2 py-1 text-gray-500 text-xs // sm:gap-10  sm:text-sm">
-      <div class="flex flex-col items-center justify-center ">
+      <div class="flex flex-col items-center justify-center " @click="getUserTweets">
         <span>TWEETS</span>
-        <span>2,409</span>
+        <span>{{ userTweets }}</span>
       </div>
       <div class="flex flex-col items-center justify-center">
         <span>FOLLOWING</span>
@@ -40,12 +40,9 @@
         <span>FOLLERS</span>
         <span>200</span>
       </div>
-      <div class="flex flex-col items-center justify-center">
+      <div class="flex flex-col items-center justify-center" @click="getFavorites">
         <span><fa :icon="['far', 'star']" /> FAVORITES</span>
-        <span>20</span>
-        <button class="">
-          <span>See favotires</span>
-        </button>
+        <span>{{ favoritesNumber }}</span>
       </div>
     </div>
     <!-- tweets input container -->
@@ -75,8 +72,28 @@ export default {
       user: null
     }
   },
+  computed: {
+    favoritesNumber () {
+      const number = this.$store.getters.getFavorites
+      return number[0].length
+    },
+    userTweets () {
+      const userTweetsNumber = this.$store.getters.getUserTweets
+      return userTweetsNumber[0].length
+    }
+  },
+
   created () {
     this.user = this.$store.getters.getUser
+  },
+  methods: {
+    getFavorites () {
+      this.$store.dispatch('setupStatus', { page: 'favorites' })
+    },
+
+    getUserTweets () {
+      this.$store.dispatch('setupStatus', { page: 'user' })
+    }
   }
 }
 </script>

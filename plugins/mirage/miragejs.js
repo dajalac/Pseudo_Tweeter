@@ -4,7 +4,9 @@ import {
   getFollowSuggestions,
   setUpUser,
   getUserTweets,
-  postNewTweeter
+  postNewTweeter,
+  getFavorites,
+  newFavorite
 } from './data'
 
 // eslint-disable-next-line no-new
@@ -29,9 +31,18 @@ new Server({
       return [getFollowSuggestions()]
     })
 
+    this.get('/favorites', () => {
+      return [getFavorites()]
+    })
+
     this.post('/newTweet', (schema, request) => {
       const attrs = JSON.parse(request.requestBody)
       postNewTweeter(attrs.payload)
+    })
+
+    this.post('/newFavorite', (schema, request) => {
+      const attrs = JSON.parse(request.requestBody)
+      newFavorite(attrs.id)
     })
   }
 })

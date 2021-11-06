@@ -1,3 +1,4 @@
+
 import faker from 'faker'
 
 // get just first name
@@ -14,32 +15,30 @@ const user = {
 
 }
 
-// user tweets
-const userTweets = []
-for (let i = 0; i < 5; i++) {
-  userTweets.push({
-    name: user.name,
-    userName: user.userName,
-    profilePhoto: user.profile,
-    tweet: faker.lorem.sentence(),
-    postMedia: faker.random.image()
-  })
-}
-
 // All tweets initial data
 const allTweets = []
 for (let i = 0; i < 5; i++) {
-  const fullName = faker.name.findName()
+  let fullName = faker.name.findName()
+  let profilePhoto = faker.image.avatar()
   let postPicture = null
+
   if (i % 2 === 0) {
     postPicture = faker.random.image()
   }
+  // set up user tweets
+  if (i % 3 === 0) {
+    postPicture = faker.random.image()
+    fullName = user.name
+    profilePhoto = user.profile
+  }
   allTweets.push({
+    id: faker.datatype.uuid(),
     name: fullName,
     userName: userName(fullName) + faker.datatype.number(),
-    profilePhoto: faker.image.avatar(),
+    profilePhoto,
     tweet: faker.lorem.sentence(),
-    postMedia: postPicture
+    postMedia: postPicture,
+    liked: false
 
   })
 }
@@ -64,6 +63,9 @@ export const setUpUser = () => {
 
 // user tweets
 export const getUserTweets = () => {
+  const userTweets = allTweets.filter((tweet) => {
+    return tweet.name === user.name
+  })
   return userTweets
 }
 // all tweets
@@ -76,7 +78,23 @@ export const getFollowSuggestions = () => {
   return suggestions
 }
 
+export const getFavorites = () => {
+  const favorites = allTweets.filter((tweet) => {
+    return tweet.liked
+  })
+
+  return favorites
+}
+
 export const postNewTweeter = (newTweet) => {
   allTweets.unshift(newTweet)
-  userTweets.unshift(newTweet)
+}
+
+export const newFavorite = (favorite) => {
+  // eslint-disable-next-line array-callback-return
+  allTweets.map((tweet) => {
+    if (tweet.id === favorite) {
+      tweet.liked = !tweet.liked
+    }
+  })
 }

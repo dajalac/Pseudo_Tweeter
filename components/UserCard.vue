@@ -30,7 +30,7 @@
     <div class="hidden border-b border-gray-200 gap-3 mx-2 py-3 text-gray-500 text-sm  // md:flex">
       <div class="flex flex-col items-center justify-center ">
         <span>TWEETS</span>
-        <span>2,409</span>
+        <span>{{userTweets}}</span>
       </div>
       <div class="flex flex-col items-center justify-center">
         <span>FOLLOWING</span>
@@ -66,6 +66,12 @@ export default {
       showModal: false,
       user: null
 
+    }
+  },
+  computed: {
+    userTweets () {
+      const userTweetsNumber = this.$store.getters.getUserTweets
+      return userTweetsNumber[0].length
     }
   },
   created () {

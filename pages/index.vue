@@ -38,16 +38,16 @@ export default {
     const promisses = []
     promisses.push(store.dispatch('setupUser'))
     promisses.push(store.dispatch('setUpTweets'))
+    promisses.push(store.dispatch('setupUserTweets'))
     promisses.push(store.dispatch('setUpSuggestions'))
 
     const data = await Promise.all(promisses)
     return data
-  }
+  },
 
-  // created () {
-  //   this.data = this.$store.getters.getTweets
-  //   console.log('create')
-  // }
+  created () {
+    this.$store.dispatch('setupStatus', { page: 'home' })
+  }
 }
 
 </script>

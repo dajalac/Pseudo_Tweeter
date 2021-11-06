@@ -7,7 +7,7 @@
       Tweets
     </div>
     <div class="flex flex-col gap-2">
-      <tweets-card v-for="(tweet) in data" :key="tweet.userName" :tweet="tweet" />
+      <tweets-card v-for="(tweet) in data" :key="tweet.id" :tweet="tweet" />
     </div>
   </div>
 </template>
@@ -22,25 +22,33 @@ export default {
       required: true
     }
   },
-  data () {
-    return {
+  // data () {
+  //   return {
 
-    }
-  },
+  //   }
+  // },
   computed: {
 
     data () {
       const tweetsList = []
-      if (this.$props.screen === 'home') {
+      const screen = this.$store.getters.getStatus
+
+      if (screen === 'home') {
         tweetsList.length = 0
         const tweets = this.$store.getters.getTweets
         tweetsList.push(tweets[0])
       }
-      if (this.$props.screen === 'user') {
+      if (screen === 'user') {
         tweetsList.length = 0
         const tweets = this.$store.getters.getUserTweets
         tweetsList.push(tweets[0])
       }
+      if (screen === 'favorites') {
+        tweetsList.length = 0
+        const tweets = this.$store.getters.getFavorites
+        tweetsList.push(tweets[0])
+      }
+
       return tweetsList[0]
     }
   }

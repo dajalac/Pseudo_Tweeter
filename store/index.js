@@ -4,10 +4,16 @@ export const state = () => ({
   tweets: [],
   suggestions: [],
   userTweets: [],
-  user: null
+  favorites: [],
+  user: null,
+  status: 'home'
 })
 
 export const mutations = {
+  setupStatus (state, value) {
+    state.status = value
+  },
+
   setUpTweets (state, value) {
     state.tweets = value
   },
@@ -22,10 +28,19 @@ export const mutations = {
 
   setupUser (state, value) {
     state.user = value
+  },
+
+  setupFavorites (state, value) {
+    state.favorites = value
   }
 }
 
 export const actions = {
+
+  setupStatus ({ commit }, stateValue) {
+    commit('setupStatus', stateValue)
+  },
+
   async setupUser ({ commit }) {
     await axios.get('/api/user').then((response) => {
       commit('setupUser', response.data[0])
@@ -50,12 +65,26 @@ export const actions = {
     })
   },
 
+  async setupFavorites ({ commit }) {
+    await axios.get('/api/favorites').then((response) => {
+      commit('setupFavorites', response.data)
+    })
+  },
+
   async postTweet ({ commit, state }, payload) {
     await axios.post('/api/newTweet', payload)
+  },
+
+  async newFavorite ({ commit, state }, payload) {
+    await axios.post('/api/newFavorite', payload)
   }
 
 }
 export const getters = {
+  getStatus (state) {
+    return state.status.page
+  },
+
   getUser (state) {
     return state.user
   },
@@ -70,5 +99,10 @@ export const getters = {
 
   getFollwers (state) {
     return state.suggestions
+  },
+
+  getFavorites (state) {
+    return state.favorites
   }
+
 }
