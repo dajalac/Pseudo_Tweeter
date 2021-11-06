@@ -2,7 +2,7 @@
 
 Esse projeto é um aplicativo web que simula uma rede social, mais especificamente o Tweeter.
 
-<img src="https://github.com/dajalac/Social_Media/blob/main/pseudoTweeter_DesktopScreen.PNG" height="300" />  <img src="https://github.com/dajalac/Social_Media/blob/main/pseudoTweeter_mobile.PNG" height="300" /> 
+<img src="https://github.com/dajalac/Social_Media/blob/main/pseudoTweeter_DesktopScreen.PNG" height="350" />    <img src="https://github.com/dajalac/Social_Media/blob/main/pseudoTweeter_mobile.PNG" height="350" /> 
 
 ## Páginas e Funcionalidades
  O aplicativo contém duas paginas, Home e Me. A seguir encontra-se uma lista das funcionalidades em cada página.
