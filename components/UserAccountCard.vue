@@ -15,7 +15,7 @@
         <img
           :src=" user.profile "
           alt="Joe doe"
-          class="rounded-full h-32 w-32 -mt-10"
+          class="rounded-full h-20 w-20 -mt-10 // sm:h-32 sm:w-32"
         >
       </div>
       <!--user name-->
@@ -27,8 +27,8 @@
       </div>
     </div>
     <!--tweets info container -->
-    <div class="border-b border-gray-200 flex gap-3 justify-center mx-2 py-1 text-gray-500 text-xs // sm:gap-10  sm:text-sm">
-      <div class="flex flex-col items-center justify-center " @click="getUserTweets">
+    <div class="border-b border-gray-200 cursor-pointer flex gap-3 justify-center mx-2 py-1 text-gray-500 text-xs // sm:gap-10  sm:text-sm">
+      <div class="flex flex-col items-center justify-center hover:text-blue-600 " @click="getUserTweets">
         <span>TWEETS</span>
         <span>{{ userTweets }}</span>
       </div>
@@ -40,7 +40,7 @@
         <span>FOLLERS</span>
         <span>200</span>
       </div>
-      <div class="flex flex-col items-center justify-center" @click="getFavorites">
+      <div class="flex flex-col items-center justify-center hover:text-blue-600" @click="getFavorites">
         <span><fa :icon="['far', 'star']" /> FAVORITES</span>
         <span>{{ favoritesNumber }}</span>
       </div>

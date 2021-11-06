@@ -10,7 +10,7 @@
         <!-- menu options-->
         <ul class="hidden md:flex flex-row gap-6 cursor-pointer">
           <li>
-            <NuxtLink to="/" class="flex flex-row justify-center items-center gap-1">
+            <NuxtLink to="/" class="flex flex-row justify-center items-center gap-1 hover:text-blue-400 ">
               <fa icon="home" />
               <span>Home</span>
             </NuxtLink >
@@ -28,7 +28,7 @@
             </div>
           </li>
           <li>
-            <NuxtLink to="/user" class="flex flex-row justify-center items-center gap-1">
+            <NuxtLink to="/user" class="flex flex-row justify-center items-center gap-1 hover:text-blue-400">
               <fa icon="user" />
               <span>Me</span>
             </NuxtLink>
