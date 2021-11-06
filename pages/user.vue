@@ -35,7 +35,7 @@ export default {
 
   async fetch ({ store }) {
     const promisses = []
-    // TODO setup user here too? in case the page is refresed in the user page
+
     promisses.push(store.dispatch('setupUserTweets'))
     promisses.push(store.dispatch('setupFavorites'))
 
@@ -46,9 +46,7 @@ export default {
   created () {
     this.$store.dispatch('setupStatus', { page: 'user' })
   }
-  // mounted () {
-  //   this.data = this.$store.getters.getTweets
-  // }
+
 }
 </script>
 
