@@ -71,11 +71,12 @@ export default {
   computed: {
     userTweets () {
       const userTweetsNumber = this.$store.getters.getUserTweets
-      return userTweetsNumber[0].length
+      return userTweetsNumber.length
     }
   },
   created () {
     this.user = this.$store.getters.getUser
+    console.log('user', this.user)
   }
 
 }

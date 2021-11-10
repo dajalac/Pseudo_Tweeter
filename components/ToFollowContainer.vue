@@ -4,7 +4,7 @@
       Who to follow
     </div>
     <div class="flex flex-col items-center gap-2 // sm:flex-row // md:flex-col">
-      <follow-card v-for ="(person,index) in data[0]" :key="index" :person="person" />
+      <follow-card v-for ="(person,index) in data" :key="index" :person="person" />
     </div>
   </div>
 </template>

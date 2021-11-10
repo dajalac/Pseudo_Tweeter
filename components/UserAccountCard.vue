@@ -75,11 +75,11 @@ export default {
   computed: {
     favoritesNumber () {
       const number = this.$store.getters.getFavorites
-      return number[0].length
+      return number.length
     },
     userTweets () {
       const userTweetsNumber = this.$store.getters.getUserTweets
-      return userTweetsNumber[0].length
+      return userTweetsNumber.length
     }
   },
 

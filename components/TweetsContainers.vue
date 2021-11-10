@@ -36,19 +36,18 @@ export default {
       if (screen === 'home') {
         tweetsList.length = 0
         const tweets = this.$store.getters.getTweets
-        tweetsList.push(tweets[0])
+        tweetsList.push(tweets)
       }
       if (screen === 'user') {
         tweetsList.length = 0
         const tweets = this.$store.getters.getUserTweets
-        tweetsList.push(tweets[0])
+        tweetsList.push(tweets)
       }
       if (screen === 'favorites') {
         tweetsList.length = 0
         const tweets = this.$store.getters.getFavorites
-        tweetsList.push(tweets[0])
+        tweetsList.push(tweets)
       }
-
       return tweetsList[0]
     }
   }

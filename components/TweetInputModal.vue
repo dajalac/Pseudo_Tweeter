@@ -55,7 +55,8 @@ export default {
         userName: this.$props.user.userName,
         profilePhoto: this.$props.user.profile,
         tweet: this.userInput,
-        postMedia: null
+        postMedia: null,
+        timeStamp: Date.now()
       }
       const data = this.$props.user
       data.tweet = this.userInput

@@ -43,7 +43,7 @@ export const actions = {
 
   async setupUser ({ commit }) {
     await axios.get('/api/user').then((response) => {
-      commit('setupUser', response.data[0])
+      commit('setupUser', response.data.users[0])
     })
   },
 
@@ -55,19 +55,20 @@ export const actions = {
 
   async setUpTweets ({ commit }) {
     await axios.get('/api/tweets').then((response) => {
+      console.log('fall', response.data)
       commit('setUpTweets', JSON.parse(JSON.stringify(response.data)))
     })
   },
 
   async setUpSuggestions ({ commit }) {
     await axios.get('/api/followSuggestions').then((response) => {
-      commit('setUpSuggestions', response.data)
+      commit('setUpSuggestions', response.data.toFollowSuggestions)
     })
   },
 
   async setupFavorites ({ commit }) {
     await axios.get('/api/favorites').then((response) => {
-      commit('setupFavorites', response.data)
+      commit('setupFavorites', response.data.tweets)
     })
   },
 
