@@ -58,11 +58,9 @@ export default {
         postMedia: null,
         timeStamp: Date.now()
       }
-      const data = this.$props.user
-      data.tweet = this.userInput
       this.$store.dispatch('postTweet', { payload: post })
-      this.$store.dispatch('setupUserTweets')
-      this.$store.dispatch('setUpTweets')
+      // this.$store.dispatch('setupUserTweets')
+      // this.$store.dispatch('setUpTweets')
       this.$emit('close')
     }
 

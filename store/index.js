@@ -18,8 +18,8 @@ export const mutations = {
     state.tweets = value
   },
 
-  setupUserTweets (state, vaue) {
-    state.userTweets = vaue
+  setupUserTweets (state, value) {
+    state.userTweets = value
   },
 
   setUpSuggestions (state, value) {
@@ -32,6 +32,11 @@ export const mutations = {
 
   setupFavorites (state, value) {
     state.favorites = value
+  },
+
+  postTweets (state, value) {
+    state.tweets.unshift(value)
+    state.userTweets.unshift(value)
   }
 }
 
@@ -55,7 +60,6 @@ export const actions = {
 
   async setUpTweets ({ commit }) {
     await axios.get('/api/tweets').then((response) => {
-      console.log('fall', response.data)
       commit('setUpTweets', JSON.parse(JSON.stringify(response.data)))
     })
   },
@@ -68,12 +72,13 @@ export const actions = {
 
   async setupFavorites ({ commit }) {
     await axios.get('/api/favorites').then((response) => {
-      commit('setupFavorites', response.data.tweets)
+      commit('setupFavorites', response.data)
     })
   },
 
   async postTweet ({ commit, state }, payload) {
     await axios.post('/api/newTweet', payload)
+    commit('postTweets', payload.payload)
   },
 
   async newFavorite ({ commit, state }, payload) {
