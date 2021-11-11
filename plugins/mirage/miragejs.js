@@ -1,14 +1,5 @@
 import { createServer, Model, Factory } from 'miragejs'
 import faker from 'faker'
-// import {
-//   getAllTweets,
-//   getFollowSuggestions,
-//   setUpUser,
-//   getUserTweets,
-//   postNewTweeter,
-//   getFavorites,
-//   newFavorite
-// } from './data'
 
 const userInfo = {
   name: faker.name.findName(),
@@ -100,18 +91,11 @@ createServer({
 
     this.get('/tweets', (schema) => {
       const tweets = schema.tweets.all()
+      // to sort the tweets according to its timestamp
       const tweetsSorted = tweets.models.sort((a, b) => {
         return b.attrs.timeStamp - a.attrs.timeStamp
       })
-      return tweetsSorted // schema.tweets.all()
-    })
-
-    this.get('/userTweets', (schema) => {
-      const userTweets = schema.tweets.where({ userName: '@ilovecandy4ever' })
-      const userTweetsSorted = userTweets.models.sort((a, b) => {
-        return b.attrs.timeStamp - a.attrs.timeStamp
-      })
-      return userTweetsSorted
+      return tweetsSorted
     })
 
     this.get('/followSuggestions', (schema) => {
@@ -139,40 +123,3 @@ createServer({
   }
 
 })
-// eslint-disable-next-line no-new
-// new Server({
-//   routes () {
-//     this.namespace = 'api'
-//     this.urlPrefix = 'http://localhost:3000'
-
-//     this.get('/user', () => {
-//       return [setUpUser()]
-//     })
-
-//     this.get('userTweets', () => {
-//       return [getUserTweets()]
-//     })
-
-//     this.get('/tweets', () => {
-//       return [JSON.parse(JSON.stringify(getAllTweets()))]
-//     })
-
-//     this.get('/followSuggestions', () => {
-//       return [getFollowSuggestions()]
-//     })
-
-//     this.get('/favorites', () => {
-//       return [getFavorites()]
-//     })
-
-//     this.post('/newTweet', (schema, request) => {
-//       const attrs = JSON.parse(request.requestBody)
-//       postNewTweeter(attrs.payload)
-//     })
-
-//     this.post('/newFavorite', (schema, request) => {
-//       const attrs = JSON.parse(request.requestBody)
-//       newFavorite(attrs.id)
-//     })
-//   }
-// })

@@ -11,7 +11,7 @@
         <trends-card /> <!--trends card will desapear in mobile view -->
       </div>
       <!--center column-->
-      <tweets-containers :screen="data"/>
+      <tweets-containers :screen="data" />
       <!--right column-->
       <div class="hidden flex-col gap-4 w-2/3 // md:flex ">
         <to-follow-container />
@@ -35,24 +35,25 @@ export default {
     }
   },
   async fetch ({ store }) {
-    // const promisses = []
-    // promisses.push(store.dispatch('setupUser'))
-    // promisses.push(store.dispatch('setUpTweets'))
-    // promisses.push(store.dispatch('setupUserTweets'))
-    // promisses.push(store.dispatch('setUpSuggestions'))
+    const user = store.getters.getUser
 
-    // const data = await Promise.all(promisses)
-    // return data
-
-    await store.dispatch('setupUser')
-    // await store.dispatch('setUpTweets')
-    // await store.dispatch('setUpSuggestions')
+    if (user === null) {
+      return await store.dispatch('setupUser')
+    }
   },
 
   created () {
+    const tweets = this.$store.getters.getTweets
+    const suggestions = this.$store.getters.getFollwers
+    // loading components were implemented to display while the data are being fetched
     this.$store.dispatch('setupStatus', { page: 'home' })
-    this.$store.dispatch('setUpTweets')
-    this.$store.dispatch('setUpSuggestions')
+
+    if (tweets.length === 0) {
+      this.$store.dispatch('setUpTweets')
+    }
+    if (suggestions.length === 0) {
+      this.$store.dispatch('setUpSuggestions')
+    }
   }
 
 }

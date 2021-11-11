@@ -34,17 +34,17 @@ export default {
   },
 
   async fetch ({ store }) {
-    const promisses = []
+    const favorites = store.getters.getFavorites
 
-    // promisses.push(store.dispatch('setupUserTweets'))
-    promisses.push(store.dispatch('setupFavorites'))
-
-    const data = await Promise.all(promisses)
-    return data
+    if (favorites.length === 0) {
+      return await store.dispatch('setupFavorites')
+    }
   },
 
   created () {
     this.$store.dispatch('setupStatus', { page: 'user' })
+    /** NOTE: the user Tweets are in the store, not in a local state,
+     because I use them on the home page to display how many tweets the user has **/
   }
 
 }

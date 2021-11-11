@@ -59,8 +59,6 @@ export default {
         timeStamp: Date.now()
       }
       this.$store.dispatch('postTweet', { payload: post })
-      // this.$store.dispatch('setupUserTweets')
-      // this.$store.dispatch('setUpTweets')
       this.$emit('close')
     }
 

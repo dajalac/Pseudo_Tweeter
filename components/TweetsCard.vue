@@ -92,9 +92,6 @@ export default {
     likePost () {
       this.like = !this.like
       this.$store.dispatch('newFavorite', { id: this.$props.tweet.id })
-      this.$store.dispatch('setupUserTweets')
-      this.$store.dispatch('setUpTweets')
-      this.$store.dispatch('setupFavorites')
     }
   }
 }
