@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center items-center fixed top-0 left-0 right-0 z-99 ">
+  <div class="flex flex-col justify-center items-center fixed top-0 left-0 right-0 z-40 ">
     <div class="flex w-full justify-center items-center bg-gray-800 py-4 px-2">
       <nav class="fixedNavbar">
         <!--burger btn om mobile view -->

@@ -19,7 +19,12 @@ export const mutations = {
   },
 
   setupUserTweets (state, value) {
-    state.userTweets = value
+    const allTweets = state.tweets
+    // get the number of userTweets
+    const userTweets = allTweets.filter((tweet) => {
+      return tweet.userName === state.user.userName
+    })
+    state.userTweets = userTweets
   },
 
   setUpSuggestions (state, value) {
@@ -52,20 +57,22 @@ export const actions = {
     })
   },
 
-  async setupUserTweets ({ commit }) {
-    await axios.get('/api/userTweets').then((response) => {
-      commit('setupUserTweets', response.data)
-    })
-  },
+  // async setupUserTweets ({ commit }) {
+  //   await axios.get('/api/userTweets').then((response) => {
+  //     commit('setupUserTweets', response.data)
+  //   })
+  // },
 
   async setUpTweets ({ commit }) {
     await axios.get('/api/tweets').then((response) => {
-      commit('setUpTweets', JSON.parse(JSON.stringify(response.data)))
+      commit('setUpTweets', response.data)
+      commit('setupUserTweets') // no need for the endpoint '/api/userTweets'
     })
   },
 
   async setUpSuggestions ({ commit }) {
     await axios.get('/api/followSuggestions').then((response) => {
+      console.log('grab the suggestions')
       commit('setUpSuggestions', response.data.toFollowSuggestions)
     })
   },

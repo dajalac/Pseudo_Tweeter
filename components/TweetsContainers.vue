@@ -6,27 +6,29 @@
     >
       Tweets
     </div>
-    <div class="flex flex-col gap-2">
+    <div v-if ="data.length ===0" class="flex flex-col gap-2">
+      <loading-tweets-card />
+      <loading-tweets-card />
+      <loading-tweets-card />
+    </div>
+    <div v-else class="flex flex-col gap-2">
       <tweets-card v-for="(tweet) in data" :key="tweet.id" :tweet="tweet" />
     </div>
   </div>
 </template>
 
 <script>
+import LoadingTweetsCard from './LoadingTweetsCard.vue'
 import TweetsCard from './TweetsCard.vue'
 export default {
-  components: { TweetsCard },
+  components: { TweetsCard, LoadingTweetsCard },
   props: {
     screen: {
       type: String,
       required: true
     }
   },
-  // data () {
-  //   return {
 
-  //   }
-  // },
   computed: {
 
     data () {
